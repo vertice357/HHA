@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Hickory Hill Arms</title>
+  <meta name="description" content="The story behind Hickory Hill Arms. American-made precision suppressors — our process, our materials, and our commitment to the shooter.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-story {
+      padding-block: 6rem;
+    }
+    .about-story__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-story__content { display: flex; flex-direction: column; gap: 1.5rem; }
+    .about-story__lead {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: .03em;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .about-story__lead span { color: var(--bronze); }
+    .about-story__body {
+      font-family: var(--font-spec);
+      font-size: .95rem;
+      color: var(--grey2);
+      line-height: 1.8;
+      letter-spacing: .02em;
+    }
+    .about-story__imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+      position: sticky;
+      top: calc(var(--nav-h) + 2rem);
+    }
+    .about-story__img {
+      aspect-ratio: 1;
+      object-fit: cover;
+      width: 100%;
+    }
+    .about-story__img:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+
+    .process { padding-block: 5rem; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .process-steps { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); }
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .process-step:last-child { border-bottom: none; }
+    .process-step__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 2rem;
+      color: var(--border2);
+      letter-spacing: .05em;
+      background: var(--bg);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+    .process-step__body {
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+    .process-step__title {
+      font-family: var(--font-spec);
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .process-step__desc {
+      font-family: var(--font-spec);
+      font-size: .82rem;
+      color: var(--grey2);
+      line-height: 1.6;
+    }
+
+    /* NFA section */
+    .nfa-section { padding-block: 5rem; }
+    .nfa-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    .nfa-steps { display: flex; flex-direction: column; gap: 1rem; }
+    .nfa-step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+    }
+    .nfa-step__n {
+      width: 28px; height: 28px;
+      background: var(--bronze);
+      color: #0a0a0a;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border-radius: 1px;
+    }
+    .nfa-step__title {
+      font-family: var(--font-spec);
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .06em;
+    }
+    .nfa-step__desc {
+      font-family: var(--font-spec);
+      font-size: .78rem;
+      color: var(--grey2);
+      line-height: 1.6;
+      margin-top: .2rem;
+    }
+    .faq { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-spec);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: .04em;
+      background: var(--bg2);
+      transition: background .2s;
+    }
+    .faq-q:hover { background: var(--bg3); }
+    .faq-q svg { width: 16px; color: var(--bronze); flex-shrink: 0; transition: transform .25s; }
+    .faq-q.open svg { transform: rotate(180deg); }
+    .faq-a {
+      display: none;
+      padding: 0 1.5rem 1.25rem;
+      background: var(--bg2);
+      font-family: var(--font-spec);
+      font-size: .82rem;
+      color: var(--grey2);
+      line-height: 1.7;
+    }
+    .faq-a.open { display: block; }
+
+    /* Contact */
+    .contact-section { padding-block: 5rem; background: var(--bg2); border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; align-items: start; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-field { display: flex; flex-direction: column; gap: .4rem; }
+    .contact-label {
+      font-family: var(--font-spec);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--grey2);
+    }
+    .contact-input,
+    .contact-textarea {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 2px;
+      padding: .75rem 1rem;
+      color: var(--white);
+      font-family: var(--font-spec);
+      font-size: .88rem;
+      letter-spacing: .02em;
+      outline: none;
+      transition: border-color .2s;
+      width: 100%;
+    }
+    .contact-input:focus,
+    .contact-textarea:focus { border-color: var(--bronze); }
+    .contact-input::placeholder,
+    .contact-textarea::placeholder { color: var(--grey3); }
+    .contact-textarea { resize: vertical; min-height: 120px; }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-info-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .contact-info-icon {
+      width: 36px; height: 36px;
+      background: var(--bronze-glow);
+      border: 1px solid var(--bronze-line);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-info-icon svg { width: 16px; color: var(--bronze); }
+    .contact-info-label {
+      font-family: var(--font-spec);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--grey3);
+      margin-bottom: .2rem;
+    }
+    .contact-info-val {
+      font-family: var(--font-spec);
+      font-size: .85rem;
+      color: var(--white);
+      letter-spacing: .03em;
+    }
+
+    @media (max-width: 900px) {
+      .about-story__grid { grid-template-columns: 1fr; }
+      .about-story__imgs { position: static; }
+      .nfa-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">HICKORY HILL<span>.</span>ARMS</a>
+    <button class="nav__burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" role="list">
+      <li><a href="products.html">Suppressors</a></li>
+      <li><a href="gunsmithing.html">Gunsmithing</a></li>
+      <li><a href="dealers.html">Dealers</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="products.html" class="nav__cta">Shop Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="container">
+      <p class="page-hero__label">About Us</p>
+      <h1 class="page-hero__title">Our Story</h1>
+      <p class="page-hero__sub">Hickory Hill Arms started with one idea: build the suppressor we couldn't find anywhere else. One that could survive what we put it through. That still looked incredible after 10,000 rounds.</p>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <section class="about-story">
+    <div class="container">
+      <div class="about-story__grid">
+        <div class="about-story__imgs reveal">
+          <img src="images/deadridge-1.png" alt="Deadridge suppressor" class="about-story__img" loading="lazy">
+          <img src="images/nightfall-1.png" alt="Nightfall suppressor" class="about-story__img" loading="lazy">
+          <img src="images/deadridge-2.png" alt="Deadridge detail" class="about-story__img" loading="lazy">
+        </div>
+        <div class="about-story__content reveal">
+          <span class="section-label">Who We Are</span>
+          <div class="rule"></div>
+          <h2 class="about-story__lead">
+            Shooters who build<br>
+            for <span>shooters.</span>
+          </h2>
+          <p class="about-story__body">
+            Hickory Hill Arms was founded on a simple premise: the suppressor market was full of acceptable. We wanted exceptional. Products that a competitive shooter, a law enforcement officer, and a serious enthusiast could all trust on day one and on day ten thousand.
+          </p>
+          <p class="about-story__body">
+            Every Hickory Hill suppressor begins as a billet of 17-4 stainless steel. Not a casting. Not a sintered tube. A solid billet, machined to tight tolerances, then heat-treated to H900 at 1600°F — the same process used in aerospace fasteners and marine hardware.
+          </p>
+          <p class="about-story__body">
+            We subject every design to BOCOG stress testing and verify MIL-STD-1474D fullband sound performance before it enters our catalog. The Deadridge and Nightfall aren't just products — they're the culmination of years of iteration with the people who actually run these tools in the field.
+          </p>
+          <p class="about-story__body">
+            As a licensed FFL/SOT, we handle Form 4 NFA transfers in-house. We believe buying a suppressor should be straightforward, and we're here to make that happen — from order placement to transfer completion.
+          </p>
+          <div class="specs-band__grid reveal" style="margin-top:.5rem;border:1px solid var(--border);">
+            <div class="specs-band__item" style="border:none;border-right:1px solid var(--border);">
+              <div class="specs-band__val">2</div>
+              <div class="specs-band__label">Models</div>
+            </div>
+            <div class="specs-band__item" style="border:none;border-right:1px solid var(--border);">
+              <div class="specs-band__val">4</div>
+              <div class="specs-band__label">Configs</div>
+            </div>
+            <div class="specs-band__item" style="border:none;">
+              <div class="specs-band__val">USA</div>
+              <div class="specs-band__label">Made In</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head__left">
+          <span class="section-label">How We Build</span>
+          <div class="rule"></div>
+          <h2 class="section-head__title">Our Process</h2>
+          <p class="section-head__sub">Every suppressor goes through the same eight-step process. No shortcuts at any stage.</p>
+        </div>
+      </div>
+      <div class="process-steps reveal">
+        <div class="process-step">
+          <div class="process-step__num">01</div>
+          <div class="process-step__body">
+            <div class="process-step__title">Material Selection</div>
+            <div class="process-step__desc">17-4 PH stainless steel billet, certified to AMS 5643 and ASTM A564. Full material traceability on every batch.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">02</div>
+          <div class="process-step__body">
+            <div class="process-step__title">CNC Machining</div>
+            <div class="process-step__desc">5-axis CNC machining to ±0.0005" tolerances. Baffles, endcaps, and tubes all machined in-house — no outsourced components.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">03</div>
+          <div class="process-step__body">
+            <div class="process-step__title">Heat Treatment</div>
+            <div class="process-step__desc">H900 condition heat treat at 1600°F minimum. Achieves 190,000 PSI tensile strength — the hardest condition available in 17-4.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">04</div>
+          <div class="process-step__body">
+            <div class="process-step__title">Bore Alignment Check</div>
+            <div class="process-step__desc">Every tube is verified for bore concentricity before assembly. Eliminates baffle strike risk from the start.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">05</div>
+          <div class="process-step__body">
+            <div class="process-step__title">Assembly</div>
+            <div class="process-step__desc">Welded and staked per spec. No adhesive-only joints. Each assembly torqued to documented specification and marked.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">06</div>
+          <div class="process-step__body">
+            <div class="process-step__title">Stress Testing</div>
+            <div class="process-step__desc">BOCOG-protocol stress test on representative samples from every production run. 60,000 rounds. Full-auto. No failures allowed.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">07</div>
+          <div class="process-step__body">
+            <div class="process-step__title">Sound Performance Verification</div>
+            <div class="process-step__desc">Measured against MIL-STD-1474D fullband standard. We publish actual dB figures — not marketing specs.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">08</div>
+          <div class="process-step__body">
+            <div class="process-step__title">Final Inspection &amp; Serialization</div>
+            <div class="process-step__desc">100% visual and dimensional inspection. Serialized, engraved per ATF requirements, and packaged for transfer.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NFA Guide -->
+  <section class="nfa-section" id="nfa">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head__left">
+          <span class="section-label">NFA Guide</span>
+          <div class="rule"></div>
+          <h2 class="section-head__title">How the Transfer Works</h2>
+          <p class="section-head__sub">Suppressors are NFA-regulated items requiring ATF approval. Here's exactly how the process works when you buy from us.</p>
+        </div>
+      </div>
+      <div class="nfa-grid">
+        <div class="nfa-steps reveal">
+          <div class="nfa-step">
+            <div class="nfa-step__n">1</div>
+            <div>
+              <div class="nfa-step__title">Order &amp; Payment</div>
+              <div class="nfa-step__desc">Place your order online. We take full payment at checkout. This locks in your price and secures your serialized unit.</div>
+            </div>
+          </div>
+          <div class="nfa-step">
+            <div class="nfa-step__n">2</div>
+            <div>
+              <div class="nfa-step__title">Choose Transfer Method</div>
+              <div class="nfa-step__desc">Transfer to HHA directly (if we're your SOT) or we ship Form 3 to your local SOT. Either way, we guide you through the paperwork.</div>
+            </div>
+          </div>
+          <div class="nfa-step">
+            <div class="nfa-step__n">3</div>
+            <div>
+              <div class="nfa-step__title">Complete ATF Form 4</div>
+              <div class="nfa-step__desc">Individual, trust, or corporation — we help you fill out the Form 4. Submit with your $200 tax stamp payment to the ATF.</div>
+            </div>
+          </div>
+          <div class="nfa-step">
+            <div class="nfa-step__n">4</div>
+            <div>
+              <div class="nfa-step__title">Wait for Approval</div>
+              <div class="nfa-step__desc">Current ATF processing times are approximately 4–8 months for individual Form 4s. We'll notify you the moment your stamp is approved.</div>
+            </div>
+          </div>
+          <div class="nfa-step">
+            <div class="nfa-step__n">5</div>
+            <div>
+              <div class="nfa-step__title">Take Possession</div>
+              <div class="nfa-step__desc">Once your Form 4 is approved, pick up your suppressor from us or your local SOT. Keep a copy of your approved Form 4 with the can at all times.</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" id="faq">
+          <h3 class="section-head__title" style="font-size:1.6rem;margin-bottom:1.5rem;">Common Questions</h3>
+          <div class="faq">
+            <div class="faq-item">
+              <div class="faq-q">
+                Do I need a trust?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-a">No. Individuals can purchase suppressors without a trust since the ATF's 41F rule change in 2016. A trust still offers benefits (multiple trustees can possess the item) but is no longer required.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">
+                How long does approval take?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-a">Current average is 4–8 months for individual Form 4 transfers. This varies by ATF workload. We'll give you real-time status updates throughout.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">
+                What's the $200 tax stamp?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-a">The NFA requires a one-time $200 transfer tax on each NFA item (suppressor, SBR, SBS, MG). This is paid directly to the ATF when you file your Form 4. It is not included in our product price.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">
+                Can I shoot it while waiting for approval?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-a">No. You cannot take possession of or use the suppressor until your Form 4 is fully approved by the ATF. The item stays with the dealer until then.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">
+                What states allow suppressors?
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-a">As of 2024, 42 states allow civilian suppressor ownership. The prohibited states are: CA, DE, HI, IL, MA, NJ, NY, RI. Always confirm your state's current laws before purchasing.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head__left">
+          <span class="section-label">Get in Touch</span>
+          <div class="rule"></div>
+          <h2 class="section-head__title">Contact Us</h2>
+          <p class="section-head__sub">Questions about products, transfers, or gunsmithing? We respond to every inquiry.</p>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form reveal" onsubmit="return false;">
+          <div class="contact-field">
+            <label class="contact-label" for="name">Full Name</label>
+            <input class="contact-input" type="text" id="name" name="name" placeholder="John Doe" autocomplete="name">
+          </div>
+          <div class="contact-field">
+            <label class="contact-label" for="email">Email Address</label>
+            <input class="contact-input" type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email">
+          </div>
+          <div class="contact-field">
+            <label class="contact-label" for="subject">Subject</label>
+            <input class="contact-input" type="text" id="subject" name="subject" placeholder="Product question, transfer inquiry, etc.">
+          </div>
+          <div class="contact-field">
+            <label class="contact-label" for="message">Message</label>
+            <textarea class="contact-textarea" id="message" name="message" placeholder="Tell us what you need..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">
+            Send Message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+        <div class="contact-info reveal">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Location</div>
+              <div class="contact-info-val">Tennessee — Contact for address</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Email</div>
+              <div class="contact-info-val">info@hickoryhillarms.com</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Instagram</div>
+              <div class="contact-info-val">@hickoryhillarms</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Business Hours</div>
+              <div class="contact-info-val">Mon–Fri · 9am–5pm CST</div>
+            </div>
+          </div>
+          <div class="pd-ffl" style="margin-top:.5rem;">
+            <div class="pd-ffl__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <p class="pd-ffl__text">For NFA transfer inquiries, please include your state of residence and whether you plan to transfer as an individual, trust, or entity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">HICKORY HILL<span>.</span>ARMS</div>
+        <p class="footer__tagline">American-made suppressors. Machined from 17-4 stainless. Built for the long haul.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title">Products</div>
+        <ul class="footer__links">
+          <li><a href="product-deadridge.html">Deadridge 5.56</a></li>
+          <li><a href="product-nightfall.html">Nightfall</a></li>
+          <li><a href="products.html">All Suppressors</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Company</div>
+        <ul class="footer__links">
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="dealers.html">Dealers</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">NFA Info</div>
+        <ul class="footer__links">
+          <li><a href="about.html#nfa">Form 4 Transfer</a></li>
+          <li><a href="dealers.html">Find FFL Near You</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2024 Hickory Hill Arms, LLC. All rights reserved.</p>
+      <div class="footer__legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+  <div class="footer__disclaimer">All NFA items are transferred in compliance with federal and applicable state law. 21+ only.</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const a = item.querySelector('.faq-a');
+      const open = a.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-a').forEach(el => el.classList.remove('open'));
+      document.querySelectorAll('.faq-q').forEach(el => el.classList.remove('open'));
+      if (!open) { a.classList.add('open'); q.classList.add('open'); }
+    });
+  });
+</script>
+</body>
+</html>

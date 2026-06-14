@@ -1,0 +1,35 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/css/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/products", "destination": "/products.html" },
+    { "source": "/suppressors", "destination": "/products.html" },
+    { "source": "/gunsmithing", "destination": "/gunsmithing.html" },
+    { "source": "/dealers", "destination": "/dealers.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/deadridge", "destination": "/product-deadridge.html" },
+    { "source": "/nightfall", "destination": "/product-nightfall.html" }
+  ]
+}

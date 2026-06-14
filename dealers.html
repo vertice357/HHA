@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dealers — Hickory Hill Arms</title>
+  <meta name="description" content="Find a Hickory Hill Arms authorized dealer near you. SOT dealers for NFA Form 4 transfers.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .dealer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5px;
+      background: var(--border);
+      margin-top: 3rem;
+    }
+    .dealer-card {
+      background: var(--bg2);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      transition: background .2s;
+    }
+    .dealer-card:hover { background: var(--bg3); }
+    .dealer-card__state {
+      font-family: var(--font-spec);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--bronze);
+    }
+    .dealer-card__name {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      letter-spacing: .05em;
+      color: var(--white);
+    }
+    .dealer-card__addr {
+      font-family: var(--font-spec);
+      font-size: .82rem;
+      color: var(--grey2);
+      line-height: 1.6;
+    }
+    .dealer-card__tags {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-top: .25rem;
+    }
+    .dealer-tag {
+      font-family: var(--font-spec);
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      border: 1px solid var(--bronze-line);
+      padding: .2rem .55rem;
+      border-radius: 1px;
+    }
+    .dealer-card__link {
+      font-family: var(--font-spec);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--grey3);
+      border-top: 1px solid var(--border);
+      padding-top: .75rem;
+      margin-top: auto;
+      transition: color .2s;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .dealer-card__link:hover { color: var(--bronze); }
+    .dealer-card__link svg { width: 12px; }
+    .become-dealer {
+      margin-top: 4rem;
+      padding: 3rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--bronze);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+    .become-dealer__title {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      letter-spacing: .05em;
+      color: var(--white);
+      margin-bottom: .5rem;
+    }
+    .become-dealer__sub {
+      font-family: var(--font-spec);
+      font-size: .85rem;
+      color: var(--grey2);
+      line-height: 1.7;
+      max-width: 48ch;
+    }
+    @media (max-width: 640px) {
+      .become-dealer { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">HICKORY HILL<span>.</span>ARMS</a>
+    <button class="nav__burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" role="list">
+      <li><a href="products.html">Suppressors</a></li>
+      <li><a href="gunsmithing.html">Gunsmithing</a></li>
+      <li><a href="dealers.html" class="active">Dealers</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html" class="nav__cta">Shop Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="container">
+      <p class="page-hero__label">Authorized Dealers</p>
+      <h1 class="page-hero__title">Find a Dealer</h1>
+      <p class="page-hero__sub">Hickory Hill Arms products are available through our network of authorized FFL/SOT dealers. All dealers are vetted for customer service and NFA compliance expertise.</p>
+    </div>
+  </div>
+
+  <section style="padding-block:4rem 6rem;">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div class="section-head__left">
+          <span class="section-label">Nationwide Network</span>
+          <div class="rule"></div>
+          <h2 class="section-head__title">Authorized SOT Dealers</h2>
+          <p class="section-head__sub">All dealers are Class III SOT licensees capable of completing NFA Form 4 transfers. You can also purchase directly from us and transfer to any SOT near you.</p>
+        </div>
+      </div>
+
+      <div class="dealer-grid">
+
+        <div class="dealer-card reveal">
+          <span class="dealer-card__state">Tennessee</span>
+          <h3 class="dealer-card__name">Hickory Hill Arms — HQ</h3>
+          <p class="dealer-card__addr">Direct seller &amp; FFL/SOT<br>Form 4 transfers handled in-house<br>Contact for address</p>
+          <div class="dealer-card__tags">
+            <span class="dealer-tag">SOT</span>
+            <span class="dealer-tag">FFL</span>
+            <span class="dealer-tag">Form 4</span>
+            <span class="dealer-tag">Gunsmithing</span>
+          </div>
+          <a href="about.html#contact" class="dealer-card__link">
+            Contact Directly
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="dealer-card reveal">
+          <span class="dealer-card__state">Texas</span>
+          <h3 class="dealer-card__name">Lone Star Armory</h3>
+          <p class="dealer-card__addr">4820 N. Lamar Blvd<br>Austin, TX 78756<br>(512) 555-0182</p>
+          <div class="dealer-card__tags">
+            <span class="dealer-tag">SOT</span>
+            <span class="dealer-tag">FFL</span>
+            <span class="dealer-tag">Form 4</span>
+          </div>
+          <a href="#" class="dealer-card__link">
+            Website
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="dealer-card reveal">
+          <span class="dealer-card__state">Georgia</span>
+          <h3 class="dealer-card__name">Southern Arms Depot</h3>
+          <p class="dealer-card__addr">1147 Veterans Memorial Hwy SW<br>Mableton, GA 30126<br>(770) 555-0341</p>
+          <div class="dealer-card__tags">
+            <span class="dealer-tag">SOT</span>
+            <span class="dealer-tag">FFL</span>
+            <span class="dealer-tag">Form 4</span>
+          </div>
+          <a href="#" class="dealer-card__link">
+            Website
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="dealer-card reveal">
+          <span class="dealer-card__state">Colorado</span>
+          <h3 class="dealer-card__name">Front Range Firearms</h3>
+          <p class="dealer-card__addr">3320 E. Mulberry St<br>Fort Collins, CO 80524<br>(970) 555-0214</p>
+          <div class="dealer-card__tags">
+            <span class="dealer-tag">SOT</span>
+            <span class="dealer-tag">FFL</span>
+          </div>
+          <a href="#" class="dealer-card__link">
+            Website
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="dealer-card reveal">
+          <span class="dealer-card__state">Florida</span>
+          <h3 class="dealer-card__name">Sunshine State Suppressors</h3>
+          <p class="dealer-card__addr">6280 N. Federal Hwy<br>Boca Raton, FL 33487<br>(561) 555-0099</p>
+          <div class="dealer-card__tags">
+            <span class="dealer-tag">SOT</span>
+            <span class="dealer-tag">FFL</span>
+            <span class="dealer-tag">Form 4</span>
+          </div>
+          <a href="#" class="dealer-card__link">
+            Website
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="dealer-card reveal">
+          <span class="dealer-card__state">Arizona</span>
+          <h3 class="dealer-card__name">Desert Eagle Arms</h3>
+          <p class="dealer-card__addr">2155 W. Glendale Ave<br>Phoenix, AZ 85021<br>(602) 555-0447</p>
+          <div class="dealer-card__tags">
+            <span class="dealer-tag">SOT</span>
+            <span class="dealer-tag">FFL</span>
+          </div>
+          <a href="#" class="dealer-card__link">
+            Website
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+      </div><!-- end dealer-grid -->
+
+      <!-- Become a dealer -->
+      <div class="become-dealer reveal">
+        <div>
+          <h3 class="become-dealer__title">Become an Authorized Dealer</h3>
+          <p class="become-dealer__sub">We're expanding our dealer network. If you're a licensed FFL/SOT with a focus on NFA items and suppressor sales, we'd love to work with you. Competitive wholesale pricing, marketing support, and co-op advertising available.</p>
+        </div>
+        <a href="about.html#contact" class="btn btn--primary">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">HICKORY HILL<span>.</span>ARMS</div>
+        <p class="footer__tagline">American-made suppressors. Machined from 17-4 stainless. Built for the long haul.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title">Products</div>
+        <ul class="footer__links">
+          <li><a href="product-deadridge.html">Deadridge 5.56</a></li>
+          <li><a href="product-nightfall.html">Nightfall</a></li>
+          <li><a href="products.html">All Suppressors</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Company</div>
+        <ul class="footer__links">
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="dealers.html">Dealers</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">NFA Info</div>
+        <ul class="footer__links">
+          <li><a href="about.html#nfa">Form 4 Transfer</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2024 Hickory Hill Arms, LLC. All rights reserved.</p>
+      <div class="footer__legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+  <div class="footer__disclaimer">All NFA items are transferred in compliance with federal and applicable state law. 21+ only.</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
